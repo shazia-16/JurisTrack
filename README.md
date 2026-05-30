@@ -3,6 +3,7 @@
 A modern, full-stack court management system built with Next.js 16, Express.js, and MySQL. This application provides a complete solution for managing legal cases, hearings, clients, documents, and court administration with real database integration.
 
 ## Project Overview
+<img width="1903" height="1034" alt="image" src="https://github.com/user-attachments/assets/0c9f66c3-a5bc-4dda-9c9f-d907a4197c62" />
 
 JurisTrack is a comprehensive legal case management platform designed to streamline court operations. The system features a responsive web interface with real-time data synchronization, enabling law firms and court administrators to efficiently manage their caseload, schedule hearings, track clients, and organize documents.
 
