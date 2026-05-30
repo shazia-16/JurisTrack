@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JurisTrack — Court Management System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container">
+        <div class="brand">
+          <div class="brand__mark" aria-hidden="true">JT</div>
+          <div class="brand__text">
+            <div class="brand__name">JurisTrack</div>
+            <div class="brand__tag">Court Management System</div>
+          </div>
+        </div>
+        <div class="topbar__meta">
+          <div class="pill" id="todayPill" aria-live="polite"></div>
+        </div>
+      </div>
+    </header>
+
+    <main class="container app">
+      <section class="grid">
+        <article class="card">
+          <header class="card__header">
+            <h2>Add Case</h2>
+            <p>Create a new case record.</p>
+          </header>
+          <form id="caseForm" class="form" autocomplete="off">
+            <div class="field">
+              <label for="caseNo">Case No</label>
+              <input id="caseNo" name="Case_No" type="text" placeholder="e.g., 2026-CV-0142" required />
+            </div>
+            <div class="field">
+              <label for="caseType">Type</label>
+              <input id="caseType" name="Type" type="text" placeholder="e.g., Civil / Criminal" required />
+            </div>
+            <div class="field">
+              <label for="dateFiled">Date Filed</label>
+              <input id="dateFiled" name="Date_Filed" type="date" required />
+            </div>
+            <div class="actions">
+              <button class="btn btn--primary" type="submit">Add Case</button>
+              <button class="btn btn--ghost" type="reset">Clear</button>
+            </div>
+            <div class="form__status" id="caseStatus" role="status" aria-live="polite"></div>
+          </form>
+        </article>
+
+        <article class="card">
+          <header class="card__header">
+            <h2>Add Judge</h2>
+            <p>Register judge details.</p>
+          </header>
+          <form id="judgeForm" class="form" autocomplete="off">
+            <div class="field">
+              <label for="judgeId">Judge ID</label>
+              <input id="judgeId" name="Judge_ID" type="text" placeholder="e.g., J-102" required />
+            </div>
+            <div class="field">
+              <label for="judgeName">Name</label>
+              <input id="judgeName" name="Name" type="text" placeholder="e.g., Justice A. Rahman" required />
+            </div>
+            <div class="field">
+              <label for="judgeCourt">Court</label>
+              <input id="judgeCourt" name="Court" type="text" placeholder="e.g., District Court" required />
+            </div>
+            <div class="actions">
+              <button class="btn btn--primary" type="submit">Add Judge</button>
+              <button class="btn btn--ghost" type="reset">Clear</button>
+            </div>
+            <div class="form__status" id="judgeStatus" role="status" aria-live="polite"></div>
+          </form>
+        </article>
+
+        <article class="card">
+          <header class="card__header">
+            <h2>Schedule Hearing</h2>
+            <p>Assign a hearing to a case.</p>
+          </header>
+          <form id="hearingForm" class="form" autocomplete="off">
+            <div class="field">
+              <label for="hearingCaseNo">Case No</label>
+              <input id="hearingCaseNo" name="Case_No" type="text" placeholder="e.g., 2026-CV-0142" required />
+            </div>
+            <div class="field">
+              <label for="hearingDate">Date</label>
+              <input id="hearingDate" name="Date" type="date" required />
+            </div>
+            <div class="field">
+              <label for="hearingTime">Time</label>
+              <input id="hearingTime" name="Time" type="time" required />
+            </div>
+            <div class="actions">
+              <button class="btn btn--primary" type="submit">Schedule</button>
+              <button class="btn btn--ghost" type="reset">Clear</button>
+            </div>
+            <div class="form__status" id="hearingStatus" role="status" aria-live="polite"></div>
+          </form>
+        </article>
+      </section>
+
+      <section class="card card--table">
+        <header class="card__header card__header--row">
+          <div>
+            <h2>Cases</h2>
+            <p>Current case list (simulated backend arrays).</p>
+          </div>
+          <div class="toolbar">
+            <div class="search">
+              <label class="sr-only" for="caseSearch">Search</label>
+              <input id="caseSearch" type="search" placeholder="Search cases…" />
+            </div>
+            <button class="btn btn--danger btn--small" id="clearDataBtn" type="button">
+              Clear All Data
+            </button>
+          </div>
+        </header>
+
+        <div class="tableWrap" role="region" aria-label="Cases table" tabindex="0">
+          <table class="table" id="casesTable">
+            <thead>
+              <tr>
+                <th>Case No</th>
+                <th>Type</th>
+                <th>Date Filed</th>
+                <th>Next Hearing</th>
+                <th class="th-actions">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="casesTbody">
+              <tr>
+                <td colspan="5" class="muted">No cases yet. Add one above.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="tables2">
+        <section class="card card--table">
+          <header class="card__header">
+            <h2>Judges</h2>
+            <p>Judges stored in the simulated backend.</p>
+          </header>
+          <div class="tableWrap" role="region" aria-label="Judges table" tabindex="0">
+            <table class="table table--compact" id="judgesTable">
+              <thead>
+                <tr>
+                  <th>Judge ID</th>
+                  <th>Name</th>
+                  <th>Court</th>
+                  <th class="th-actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="judgesTbody">
+                <tr>
+                  <td colspan="4" class="muted">No judges yet. Add one above.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card card--table">
+          <header class="card__header">
+            <h2>Hearings</h2>
+            <p>Hearings stored in the simulated backend.</p>
+          </header>
+          <div class="tableWrap" role="region" aria-label="Hearings table" tabindex="0">
+            <table class="table table--compact" id="hearingsTable">
+              <thead>
+                <tr>
+                  <th>Case No</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th class="th-actions">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="hearingsTbody">
+                <tr>
+                  <td colspan="4" class="muted">No hearings yet. Schedule one above.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+
+      <footer class="footer">
+        <span class="muted">JurisTrack (demo) — HTML/CSS/JS only.</span>
+      </footer>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
